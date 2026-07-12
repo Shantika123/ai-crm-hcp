@@ -1,164 +1,450 @@
 # AI-First CRM HCP Module
 
-## Overview
+## 📌 Overview
 
-This project is an AI-powered Customer Relationship Management (CRM) system for Healthcare Professional (HCP) interactions. It enables pharmaceutical sales representatives to log and manage doctor interactions using a conversational AI assistant instead of manually filling out forms.
+AI-First CRM HCP Module is an AI-powered Customer Relationship Management system designed for pharmaceutical field representatives to efficiently manage Healthcare Professional (HCP) interactions.
 
-The application uses LangGraph to orchestrate AI tools and Groq's Gemma2-9B-IT model to understand natural language, extract structured information, and assist field representatives.
+The application provides two ways to log interactions:
 
----
+* **Structured form-based entry**
+* **Conversational AI assistant**
 
-## Features
+The AI assistant allows representatives to describe meetings naturally, and the system automatically extracts important interaction details such as doctor name, discussion topics, sentiment, outcomes, and follow-up dates.
 
-* AI-driven interaction logging using natural language
-* Automatic form population
-* AI-based interaction editing
-* AI-generated interaction summaries
-* AI-generated follow-up suggestions
-* HCP interaction history
-* HCP engagement insights
-* Redux state management
-* FastAPI backend
-* LangGraph agent orchestration
-* MySQL database integration
+The project uses **LangGraph as an AI agent framework** and **Groq LLM (Gemma2-9B-IT)** for intelligent interaction processing.
 
 ---
 
-## Tech Stack
+# 🚀 Features
 
-### Frontend
+## AI Interaction Management
 
-* React
+✅ Log HCP interactions using natural language
+✅ Automatically extract interaction details
+✅ Populate CRM fields using AI
+✅ Convert relative dates into actual dates
+✅ Detect doctor sentiment and outcomes
+
+## AI Assistant Capabilities
+
+✅ Edit existing interactions using commands
+✅ Generate interaction summaries
+✅ Suggest follow-up actions
+✅ View HCP interaction history
+✅ Generate HCP engagement insights
+
+## Application Features
+
+✅ React frontend with Redux state management
+✅ FastAPI backend
+✅ LangGraph AI agent workflow
+✅ Groq LLM integration
+✅ MySQL database support
+✅ REST API communication
+
+---
+
+# 🛠️ Tech Stack
+
+## Frontend
+
+* React.js
 * Redux Toolkit
 * Axios
 * CSS
 * Google Inter Font
 
-### Backend
+## Backend
 
 * Python
 * FastAPI
 * LangGraph
-* Groq API (Gemma2-9B-IT)
-* MySQL
+* Groq API
+* Gemma2-9B-IT Model
 * SQLAlchemy
+* MySQL
 
 ---
 
-## LangGraph Tools
+# 🤖 LangGraph AI Agent
 
-### 1. Log Interaction Tool
+The LangGraph agent acts as the central decision-making system.
 
-* Extracts structured interaction data from natural language.
-* Automatically fills the interaction form.
-* Saves the interaction to the database.
+It analyzes user messages and routes them to the appropriate AI tool based on intent.
 
-### 2. Edit Interaction Tool
+Example:
 
-* Updates only the fields specified by the user.
-* Preserves all other interaction details.
+```
+User:
+"Summarize this interaction"
 
-### 3. Summary Tool
+↓
 
-* Generates a concise summary of the interaction.
+LangGraph Router
 
-### 4. Follow-up Tool
+↓
 
-* Suggests professional follow-up actions based on the interaction.
+Summary Tool
 
-### 5. History Tool
+↓
 
-* Displays previous interactions for the selected HCP.
-
-### 6. HCP Insight Tool
-
-* Analyzes engagement level.
-* Identifies product interest.
-* Reviews interaction sentiment.
-* Suggests the next sales action.
-
----
-
-## Project Structure
-
-```text
-ai-crm-hcp/
-│
-├── backend/
-│   ├── app/
-│   │   ├── agents/
-│   │   ├── database/
-│   │   ├── models/
-│   │   ├── routes/
-│   │   ├── services/
-│   │   └── tools/
-│   └── requirements.txt
-│
-├── frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   ├── redux/
-│   │   └── api/
-│   └── package.json
-│
-├── .gitignore
-└── README.md
+AI Generated Summary
 ```
 
 ---
 
-## Installation
+# 🔧 LangGraph Tools
 
-### Backend
+## 1. Log Interaction Tool
+
+Purpose:
+
+Extract interaction details from natural language input.
+
+Capabilities:
+
+* Identify HCP name
+* Extract meeting date and time
+* Identify discussed products/topics
+* Detect sentiment
+* Capture materials shared
+* Extract follow-up date
+
+Example:
+
+Input:
+
+```
+Today I met Dr Smith at 11:30 AM.
+We discussed Product X for diabetes treatment.
+The doctor agreed to try the product.
+I shared brochures and samples.
+```
+
+Output:
+
+```json
+{
+ "hcpName":"Dr Smith",
+ "date":"2026-07-12",
+ "time":"11:30",
+ "topics":"Product X, diabetes treatment",
+ "materials":"brochures, samples",
+ "sentiment":"Positive",
+ "outcomes":"Doctor agreed to try the product"
+}
+```
+
+---
+
+## 2. Edit Interaction Tool
+
+Purpose:
+
+Modify existing interaction information.
+
+Features:
+
+* Updates only requested fields
+* Maintains existing information
+* Supports date and time conversion
+
+Example:
+
+```
+Change doctor name to Dr John
+and update sentiment to negative
+```
+
+Output:
+
+```json
+{
+ "hcpName":"Dr John",
+ "sentiment":"Negative"
+}
+```
+
+---
+
+## 3. Summary Tool
+
+Purpose:
+
+Creates a concise summary of the HCP interaction.
+
+Example:
+
+```
+Summarize this interaction
+```
+
+Output:
+
+```
+Dr John discussed Product X for diabetes treatment.
+The doctor showed interest and received brochures and samples.
+Follow-up scheduled for 19-07-2026.
+```
+
+---
+
+## 4. Follow-up Suggestion Tool
+
+Purpose:
+
+Provides next-step recommendations.
+
+Example:
+
+```
+Suggest follow up actions
+```
+
+Output:
+
+* Schedule follow-up meeting
+* Address doctor concerns
+* Share additional materials
+* Collect product feedback
+
+---
+
+## 5. History Tool
+
+Purpose:
+
+Displays previous HCP interactions.
+
+Example:
+
+```
+Show interaction history
+```
+
+Output:
+
+```
+Interaction History for Dr John
+
+• Previous visit recorded
+• Interested in Product X
+• Requested product samples
+```
+
+---
+
+## 6. HCP Insight Tool
+
+Purpose:
+
+Analyzes doctor engagement and recommends sales actions.
+
+Provides:
+
+* Engagement level
+* Product interest analysis
+* Sentiment evaluation
+* Recommended next action
+
+Example:
+
+```
+Give insight about this doctor
+```
+
+Output:
+
+```
+• Doctor engagement level is high.
+• Strong interest shown in Product X.
+• Positive sentiment detected.
+• Follow up after product trial feedback.
+```
+
+---
+
+# 📂 Project Structure
+
+```
+ai-crm-hcp/
+
+│
+├── backend/
+│
+│   ├── app/
+│   │
+│   ├── agents/
+│   │   └── langgraph_agent.py
+│   │
+│   ├── tools/
+│   │   ├── log_tool.py
+│   │   ├── edit_tool.py
+│   │   ├── summary_tool.py
+│   │   ├── followup_tool.py
+│   │   ├── history_tool.py
+│   │   └── hcp_insight_tool.py
+│   │
+│   ├── routes/
+│   ├── services/
+│   └── main.py
+│
+├── frontend/
+│
+│   ├── src/
+│   │
+│   ├── components/
+│   │
+│   ├── redux/
+│   │
+│   └── api/
+│
+├── README.md
+└── .gitignore
+
+```
+
+---
+
+# ⚙️ Installation & Setup
+
+## Backend Setup
+
+Clone the repository:
+
+```bash
+git clone https://github.com/Shantika123/ai-crm-hcp.git
+```
+
+Navigate to backend:
 
 ```bash
 cd backend
+```
 
+Create virtual environment:
+
+```bash
 python -m venv venv
+```
 
+Activate environment:
+
+Windows:
+
+```bash
 venv\Scripts\activate
+```
 
+Install dependencies:
+
+```bash
 pip install -r requirements.txt
+```
 
+Run FastAPI server:
+
+```bash
 python -m uvicorn app.main:app --reload
 ```
 
----
+Backend runs at:
 
-### Frontend
-
-```bash
-cd frontend
-
-npm install
-
-npm run dev
+```
+http://127.0.0.1:8000
 ```
 
 ---
 
-## Database
+# Frontend Setup
 
-* MySQL
-* Stores HCP interaction records
-* Supports interaction history and updates
+Navigate to frontend:
+
+```bash
+cd frontend
+```
+
+Install packages:
+
+```bash
+npm install
+```
+
+Start application:
+
+```bash
+npm run dev
+```
+
+Frontend runs at:
+
+```
+http://localhost:5173
+```
 
 ---
 
-## AI Workflow
+# 🗄️ Database
 
-1. User enters a natural language interaction.
-2. LangGraph routes the request to the appropriate tool.
-3. Groq LLM extracts or analyzes the information.
-4. FastAPI processes the response.
-5. Redux updates the UI.
-6. Interaction is stored or updated in MySQL.
+Database:
+
+```
+MySQL
+```
+
+The database stores:
+
+* HCP details
+* Interaction records
+* Dates and follow-ups
+* Sentiment information
+* Interaction history
 
 ---
 
-## Example Prompts
+# 🔄 AI Workflow
 
-### Log Interaction
+```
+User Input
+
+     ↓
+
+React Chat Interface
+
+     ↓
+
+FastAPI API
+
+     ↓
+
+LangGraph Agent
+
+     ↓
+
+Tool Selection
+
+     ↓
+
+Groq LLM Processing
+
+     ↓
+
+Response
+
+     ↓
+
+Redux State Update
+
+     ↓
+
+UI Display
+```
+
+---
+
+# 🧪 Example Commands
+
+## Log Interaction
 
 ```
 Today I met Dr Smith at 11:30 AM.
@@ -168,31 +454,31 @@ I shared brochures and samples.
 Follow up next Monday.
 ```
 
-### Edit Interaction
+## Edit Interaction
 
 ```
-Change the doctor name to Dr John and update sentiment to negative.
+Change doctor name to Dr John and update sentiment to negative
 ```
 
-### Summary
+## Summary
 
 ```
 Summarize this interaction
 ```
 
-### Follow-up
+## Follow-up
 
 ```
 Suggest follow up actions
 ```
 
-### History
+## History
 
 ```
 Show interaction history
 ```
 
-### Insight
+## Insights
 
 ```
 Give insight about this doctor
@@ -200,20 +486,22 @@ Give insight about this doctor
 
 ---
 
-## Future Enhancements
+# 🔮 Future Enhancements
 
-* Authentication and user roles
-* Dashboard with analytics
+* User authentication
+* Role-based access control
+* Sales dashboards
+* Analytics and reporting
 * Calendar integration
 * Voice-based interaction logging
-* Multi-HCP interaction management
+* Multiple HCP management
 
 ---
 
-## Author
+# 👨‍💻 Author
 
 **Shantika Subhash Naik**
 
-Computer Science & Engineering Graduate
+Computer Science & Engineering
 
 AI-First CRM HCP Module Assignment
