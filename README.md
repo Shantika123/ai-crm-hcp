@@ -97,7 +97,7 @@ AI Generated Summary
 
 ---
 
-# 🔧 LangGraph Tools
+# LangGraph Tools
 
 ## 1. Log Interaction Tool
 
@@ -388,7 +388,7 @@ http://localhost:5173
 
 ---
 
-# 🗄️ Database
+# Database
 
 Database:
 
@@ -406,7 +406,7 @@ The database stores:
 
 ---
 
-# 🔄 AI Workflow
+# AI Workflow
 
 ```
 User Input
@@ -446,7 +446,7 @@ UI Display
 
 ---
 
-# 🧪 Example Commands
+# Example Commands
 
 ## Log Interaction
 
@@ -490,7 +490,7 @@ Give insight about this doctor
 
 ---
 
-# 🔮 Future Enhancements
+# Future Enhancements
 
 * User authentication
 * Role-based access control
@@ -502,7 +502,7 @@ Give insight about this doctor
 
 ---
 
-# 👨‍💻 Author
+# Author
 
 **Shantika Subhash Naik**
 
