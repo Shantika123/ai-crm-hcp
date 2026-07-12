@@ -19,33 +19,33 @@ The project uses **LangGraph as an AI agent framework** and **Groq LLM (Gemma2-9
 
 ## AI Interaction Management
 
-- ✅ Automatically extract interaction details from natural language
-- ✅ Populate CRM fields using AI
-- ✅ Convert relative dates into actual dates
-- ✅ Detect doctor sentiment and outcomes
-- ✅ Identify HCP name, discussion topics, and products
-- ✅ Capture shared materials and follow-up dates
-- ✅ Generate structured interaction records automatically
+- Automatically extract interaction details from natural language
+- Populate CRM fields using AI
+- Convert relative dates into actual dates
+- Detect doctor sentiment and outcomes
+- Identify HCP name, discussion topics, and products
+- Capture shared materials and follow-up dates
+- Generate structured interaction records automatically
 
 ## AI Assistant Capabilities
 
-- ✅ Edit existing interactions using conversational commands
-- ✅ Generate concise interaction summaries
-- ✅ Suggest professional follow-up actions
-- ✅ Display previous HCP interaction history
-- ✅ Analyze HCP engagement and product interest
-- ✅ Provide AI-based sales recommendations
+- Edit existing interactions using conversational commands
+- Generate concise interaction summaries
+- Suggest professional follow-up actions
+- Display previous HCP interaction history
+- Analyze HCP engagement and product interest
+- Provide AI-based sales recommendations
 
 ## Application Features
 
-- ✅ React frontend with Redux state management
-- ✅ FastAPI backend
-- ✅ LangGraph AI agent orchestration
-- ✅ Groq LLM integration using Gemma2-9B-IT model
-- ✅ MySQL database support
-- ✅ REST API communication between frontend and backend
-- ✅ Conversational chat interface for interaction logging
-- ✅ Structured form-based interaction view
+- React frontend with Redux state management
+- FastAPI backend
+- LangGraph AI agent orchestration
+- Groq LLM integration using Gemma2-9B-IT model
+- MySQL database support
+- REST API communication between frontend and backend
+- Conversational chat interface for interaction logging
+- Structured form-based interaction view
 ---
 
 # 🛠️ Tech Stack
